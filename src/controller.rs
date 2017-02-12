@@ -1,16 +1,16 @@
-use Player;
+use Device;
 
 use ssdp::FieldMap;
 use ssdp::header::{HeaderMut, Man, MX, ST};
 use ssdp::message::SearchRequest;
 
-pub struct Sonos {
-    players: Vec<Player>,
+pub struct Controller {
+    devices: Vec<Device>,
 }
 
-impl Sonos {
-    pub fn new() -> Sonos {
-        Sonos { players: vec![] }
+impl Controller {
+    pub fn new() -> Self {
+        Controller { devices: vec![] }
     }
 
     pub fn discover(&mut self) {
@@ -22,8 +22,8 @@ impl Sonos {
         request.set(ST::Target(search_target));
 
         for (_, src) in request.multicast().unwrap() {
-            let player = Player::new(src);
-            self.players.push(player);
+            let device = Device::new(src);
+            self.devices.push(device);
         }
     }
 }

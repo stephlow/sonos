@@ -1,10 +1,14 @@
 extern crate ssdp;
+extern crate hyper;
+extern crate xml;
 
-mod sonos;
-pub use sonos::Sonos;
+mod endpoints;
 
-mod player;
-pub use player::Player;
+mod devices;
+use devices::Device;
+
+mod controller;
+pub use controller::Controller;
 
 #[cfg(test)]
 mod tests {

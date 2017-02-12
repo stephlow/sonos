@@ -1,8 +1,8 @@
 extern crate sonos;
 
-use sonos::Sonos;
+use sonos::Controller;
 
 fn main() {
-    let mut sonos = Sonos::new();
+    let mut sonos = Controller::new();
     sonos.discover();
 }
